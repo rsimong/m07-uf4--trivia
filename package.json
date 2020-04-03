@@ -1,0 +1,26 @@
+{
+  "name": "m07-uf4--trivia",
+  "version": "1.0.0",
+  "description": "Crea una aplicación que podrá obtener preguntas de un servicio web externo. Si el usuario está logueado, el resultado de la búsqueda de las preguntas se guardará en la BBDD (MongoDB). Se podrá consultar todas las búsquedasy las preguntas de varias formas. Si el usuario no está logueado, se podrán obtener preguntas del servicio externo, pero no se guardarán en la BBDD.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsimong/m07-uf4--trivia.git"
+  },
+  "author": "Miguel Antonio Cortes y Ricard Simón",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rsimong/m07-uf4--trivia/issues"
+  },
+  "homepage": "https://github.com/rsimong/m07-uf4--trivia#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2"
+  }
+}
