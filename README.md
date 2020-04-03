@@ -17,7 +17,7 @@ Si no se obtiene un mínimo de un 4 sobre 10 en esta entrega, no se podrá hacer
 _Es necesario superar una entrevista de práctica mostrando el correcto funcionamiento de la aplicación, para poder tener una nota._
 
 ## Ejercicio #1 Questions DB
-Crea una aplicación que podrá obtener preguntas de un servicio web externo. Si el usuarioestá logueado, el resultado de la búsqueda de las preguntas se guardará en la BBDD (MongoDB).Se podrá consultar todas las búsquedasy las preguntas de varias formas.Si el usuario no está logueado, se podrán obtener preguntas del servicio externo, pero no se guardarán en la BBDD.
+Crea una aplicación que podrá obtener preguntas de un servicio web externo. Si el usuario está logueado, el resultado de la búsqueda de las preguntas se guardará en la BBDD (MongoDB). Se podrá consultar todas las búsquedasy las preguntas de varias formas. Si el usuario no está logueado, se podrán obtener preguntas del servicio externo, pero no se guardarán en la BBDD.
 
 El servicio externo usados será la API: https://opentdb.com/api_config.php
 
@@ -42,19 +42,19 @@ La puntuación se dividirá de la siguiente forma:
 
 - Puntuación compartida:
   - (``0,5p``) BBDD correcta.
-  - (``0,5p``) *Uso de Git.
-  - (``0,5p``) *Uso de Postman (crear colecciones de URLs y crear documentación de la API).
+  - (``0,5p``) \*Uso de Git.
+  - (``0,5p``) \*Uso de Postman (crear colecciones de URLs y crear documentación de la API).
 - Puntuación del desarrollador 1:
   - (``2p``) CRUD preguntas.
   - (``2p``) Registro, login y middleware
   - (``2p``) Búsqueda avanzada de preguntas.
-  - (``1,5p``) Seguimiento semanal(0,5 cada seguimientodías: 22 o 23, 29 o 30, y 6 o 7).
+  - (``1,5p``) Seguimiento semanal (0,5 cada seguimientodías: 22 o 23, 29 o 30, y 6 o 7).
   - (``1p``) \*Calidad del códigoy separación en servicios, controladores, etc.
 - Puntuación del desarrollador 2:
   - (``2p``) CRUD de búsquedas.
   - (``2p``) Creación de búsquedas y sus preguntas usando el servicio externo.
   - (``2p``) Búsqueda avanzada de búsquedas.
-  - (``1,5p``) Seguimiento semanal(0,5 cada seguimientodías: 22 o 23, 29 o 30, y 6 o 7).
-  - (``1p``) \*Calidad del códigoy separación en servicios, controladores, etc.
+  - (``1,5p``) Seguimiento semanal (0,5 cada seguimientodías: 22 o 23, 29 o 30, y 6 o 7).
+  - (``1p``) \*Calidad del código y separación en servicios, controladores, etc.
   
-Los apartados marcados con un * no se contarán a menos que se obtenga un mínimo de 5 en los demás puntos.
+Los apartados marcados con un \* no se contarán a menos que se obtenga un mínimo de 5 en los demás puntos.
