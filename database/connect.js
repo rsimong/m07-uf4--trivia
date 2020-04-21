@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
 
-module.exports.createConnection = () => {
-    const myPromise = new Promise((resolve, reject) => {
-        mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
-            if (err) {
-                console.log('ERROR DB connection');
-                return reject('ERROR DB connection');
-            } else {
-                console.log('DB Connected!');
-                return resolve('DB Connected!');
-            }
+module.exports.createConnection = async () => {
+    try {
+        await mongoose.connect(process.env.DB_URL, {
+            useNewUrlParser: true, 
+            useUnifiedTopology: true
         });
-    });
-    return myPromise;
+        console.log('DB Connected');
+        
+        mongoose.connection.on('error', (error) => {
+            console.log('ERROR the conecction was interrupted. ', error);
+        });
+    } catch (error) {
+        console.log('ERROR Cannot connect to the DB: ', error);
+    }
 };

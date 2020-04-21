@@ -7,10 +7,11 @@ module.exports = {
     httpStatus: {
         ok: 200,
         bad_request: 400,
-        created: 201
+        registered: 201
     },
     controllerMessages: {
-        pageFound: 'Page found'
+        pageFound: 'Page found',
+        userRegistered: 'User registered successfully'
         
     },
     requestObj: {
