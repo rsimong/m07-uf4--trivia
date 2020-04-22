@@ -1,20 +1,13 @@
-const bcrypt = require('bcrypt');
-
+        /* Registrar usuario */
 module.exports.insertData = async (data) => {
+    let responseObj = {satus: false};
     try {
-        bcrypt.hash(data.model.password, 10, async (error, hash) => {
-            let responseObj = {satus: false};
-            if (error) {
-                console.log('ERROR to encript password: ', error);
-            }
-            data.model.password = hash;
-            const docs = await data.model.save();
+        const docs = await data.model.save();
 
-            responseObj = {
-                result: docs,
-                status: true
-            };
-        })
+        responseObj = {
+            result: docs,
+            status: true
+        };
     } catch (e) {
         responseObj = {
             error: e,
@@ -22,4 +15,26 @@ module.exports.insertData = async (data) => {
         };
     }
     return responseObj;
+}
+
+        /* Login */
+module.exports.findOne = async (data) =>{
+    let responseObj = { status: false};
+    try {
+        const docs = await data.model.findOne(data.findQuery);
+
+        console.log(docs);
+        
+        responseObj = {
+            result: docs,
+            status: true
+        };
+    } catch (e) {
+        responseObj = {
+            error: e,
+            status: false
+        }
+        console.log('ERROR-crudRepositoryUser-findOne: ', e);
+    }
+    return responseObj
 }
