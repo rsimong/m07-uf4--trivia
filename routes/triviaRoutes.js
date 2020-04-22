@@ -8,4 +8,7 @@ const userSchema = require('../models/joi/userSchema');
 /* Register user */
 router.post('/register',
     joiSchemaValidation.validate(userSchema.registerUser, constants.requestObj.BODY_PARAMS),
-    userController.register);
+    userController.register
+);
+
+module.exports = router;
