@@ -11,12 +11,16 @@ module.exports = {
     },
     controllerMessages: {
         pageFound: 'Page found',
-        userRegistered: 'User registered successfully'
+        userRegistered: 'User registered successfully',
+        loguedUser: 'You Are Logued!',
+        userInvalidCredentials: '¿Estas tonto o que?'
         
     },
     requestObj: {
         BODY_PARAMS: 'body',
         QUERY_PARAMS: 'query',
         PATH_PARAMS: 'path'
-    }
+    },
+
+    secret_key: "trivia"
 }
