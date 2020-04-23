@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
         /* Registrar usuario */
 module.exports.insertData = async (data) => {
     let responseObj = {satus: false};
@@ -21,14 +23,14 @@ module.exports.insertData = async (data) => {
 module.exports.findOne = async (data) =>{
     let responseObj = { status: false};
     try {
-        const docs = await data.model.findOne(data.findQuery);
-
-        console.log(docs);
-        
+        const docs = await data.model.findOne(
+            { username: data.findQuery.username }
+        ) 
         responseObj = {
             result: docs,
             status: true
         };
+
     } catch (e) {
         responseObj = {
             error: e,
