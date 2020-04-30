@@ -23,10 +23,10 @@ module.exports.registerUser = async (user) => {
     return responseObj;
 }
 
-module.exports.authenticate = async (user) =>{
+module.exports.authenticate = async (user) => {
     const responseObj = constants.responseObj;
     try {
-        const data ={
+        const data = {
             findQuery: {
                 username: user.username,
                 password: user.password
