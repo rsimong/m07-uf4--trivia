@@ -4,7 +4,7 @@
   "description": "Crea una aplicación que podrá obtener preguntas de un servicio web externo. Si el usuario está logueado, el resultado de la búsqueda de las preguntas se guardará en la BBDD (MongoDB). Se podrá consultar todas las búsquedasy las preguntas de varias formas. Si el usuario no está logueado, se podrán obtener preguntas del servicio externo, pero no se guardarán en la BBDD.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon -r dotenv/config index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "joi-objectid": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
     "mongoose": "^5.9.10",
     "nodemon": "^2.0.2"
   }
