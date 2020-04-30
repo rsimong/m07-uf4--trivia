@@ -40,3 +40,43 @@ module.exports.findOne = async (data) =>{
     }
     return responseObj
 }
+
+        /*Question CRUD*/
+module.exports.insertQuestion = async (data) =>{
+    return new Promise((resolve, reject) => {
+        data.model.save().then(docs => {
+            const responseObj = {
+                result: docs,
+                status: true
+            }
+            resolve(responseObj)
+        }).catch(err => {
+            const responseObj = {
+                result: err,
+                status: false
+            };
+            reject(responseObj)
+        })
+    });
+}
+
+module.exports.updateData = (data) => {
+    return new Promise((resolve, reject) => {
+        data.model.findOneAndUpdate(data.findQuery, data.updateQuery,
+            {new: true, projection: data.projection, useFindAndModify: false}
+        )
+        .then(docs =>{
+            const responseObj = {
+                result: docs,
+                status: true
+            }
+            resolve(responseObj);
+        }).catch(error => {
+            const responseObj = {
+                error: error,
+                status: false
+            }
+            reject(responseObj)
+        })
+    })
+}
