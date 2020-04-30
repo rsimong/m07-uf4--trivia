@@ -1,4 +1,4 @@
-const questionService = require('../Services/questionService');
+const questionService = require('../services/questionService');
 const constants = require('../config/constants');
 
 module.exports.creaetQuestion = async (request, response) =>{
@@ -30,10 +30,28 @@ module.exports.updateQuestion = async (request, response) =>{
 
         if (responseFromService.status === constants.httpStatus.ok) {
             responseObj = responseFromService;
-            responseObj.message = Constants.controllerMessages.questionUpdated;
+            responseObj.message = constants.controllerMessages.questionUpdated;
         }
     } catch (error) {
         console.log("ERROR-questionController-updateQuestion: ", error);
+    }
+    return response.status(responseObj.status).send(responseObj);
+}
+
+module.exports.destroy = async (request, response) => {
+    let responseObj = constants.requestObj;
+
+    try {
+        const questionId = request.params.id;
+
+        const responseFromService = await questionService.delete(questionId);
+
+        if (responseFromService === constants.httpStatus.ok) {
+            responseObj = responseFromService;
+            responseObj.message = constants.controllerMessages.questionDeleted;
+        }
+    } catch (error) {
+        console.log("ERROR-questionController-destroy: ", error)
     }
     return response.status(responseObj.status).send(responseObj);
 }

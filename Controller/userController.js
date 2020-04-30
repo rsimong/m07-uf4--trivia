@@ -29,7 +29,9 @@ module.exports.authenticate = async (request, response) => {
         const user = request.body;
         const responseFromService = await userService.authenticate(user);
 
-        if (responseFromService.status === constants.httpStatus.ok) {
+        if (responseFromService.status === constants.httpStatus.ok && await bcrypt.compareSync(user.password,responseFromService.body.password)) {
+            console.log("Generar token");
+            
             const token = jwt.sign(
                 {
                     id: responseFromService.body._id

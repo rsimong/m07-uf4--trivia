@@ -30,7 +30,7 @@ module.exports.update = async (dataFromController) =>{
             findQuery:{
                 _id: mongoose.Types.ObjectId(dataFromController.id)
             },
-            model: dataFromController,
+            model: Question,
             updateQuery: {},
             projection: {
                 _id: false
@@ -43,7 +43,7 @@ module.exports.update = async (dataFromController) =>{
         if (dataFromController.question) data.updateQuery.question = dataFromController.question;
         if (dataFromController.correct_answer) data.updateQuery.correct_answer = dataFromController.correct_answer;
         if (dataFromController.incorrect_answer) data.updateQuery.incorrect_answer = dataFromController.incorrect_answer;
-    
+        
         const responseFromBBDD = await crudRepository.updateData(data);
 
         if (responseFromBBDD.status) {
@@ -55,3 +55,29 @@ module.exports.update = async (dataFromController) =>{
     }
     return responseObj;
 }
+
+module.exports.delete = async (question) => {
+    const responseObj = constants.responseObj;
+
+    try {
+        const data = {
+            findQuery: {
+                _id: mongoose.Types.ObjectId(question)
+            },
+            model: Question,
+            projection: {
+                _v: false
+            }
+        };
+
+        const responseFromBBDD = await crudRepository.deleteData(data);
+        
+        if (responseFromBBDD.status) {
+            responseObj.status = constants.httpStatus.ok;
+            responseObj.body = responseFromBBDD.result;
+        }
+    } catch (error) {
+        console.log("ERROR-questionService-delete", error);
+    }
+    return responseObj;
+} 

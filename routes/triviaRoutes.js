@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../Controller/userController');
-const quetionController = require('../Controller/questionController');
-const joiSchemaValidation = require('../Middlewares/joiSchemaValidation');
+const userController = require('../controller/userController');
+const quetionController = require('../controller/questionController');
+const joiSchemaValidation = require('../middlewares/joiSchemaValidation');
 const constants = require('../config/constants');
 const userSchema = require('../models/joi/userSchema');
 const questionSchema = require('../models/joi/questionSchema');
-const tokenValidation = require('../Middlewares/tokenValidation')
+const tokenValidation = require('../middlewares/tokenValidation')
 
         /* Register user */
 router.post('/register',
@@ -20,7 +20,6 @@ router.post('/login',
     userController.authenticate
 );
 
-
         /*Questions CRUD*/
 router.post('/create', 
     joiSchemaValidation.validate(questionSchema.createQuestion, constants.requestObj.BODY_PARAMS),
@@ -30,11 +29,17 @@ router.post('/create',
 
 router.put('/:id', 
     joiSchemaValidation.validate(questionSchema.questionIdSchema, constants.requestObj.PATH_PARAMS),
-    joiSchemaValidation.validate(questionSchema.updateQuestion, constants.requestObj.BODY_PARAMS)
+    joiSchemaValidation.validate(questionSchema.updateQuestion, constants.requestObj.BODY_PARAMS),
+    tokenValidation.validate,
+    quetionController.updateQuestion
+);
+
+router.delete('/:id',
+    joiSchemaValidation.validate(questionSchema.questionIdSchema, constants.requestObj.PATH_PARAMS),
+    tokenValidation.validate,
+    quetionController.destroy
     
 )
-
-
 
         /**Test */
 router.get('/saludo', tokenValidation.validate,

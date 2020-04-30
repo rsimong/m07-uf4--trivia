@@ -17,12 +17,12 @@ module.exports = {
 
     }),
     updateQuestion: Joi.object({
-        category: Joi.string().min(3).required(),
-        type: Joi.string().min(3).required(),
-        difficulty: Joi.string().min(3).required(),
-        question: Joi.string().min(3).required(),
-        correct_answer: Joi.string().min(3).required(), 
-        incorrect_answer: Joi.alternatives().try(incorrect_answers, arraySchema).required()
+        category: Joi.string().min(3),
+        type: Joi.string().min(3),
+        difficulty: Joi.string().min(3),
+        question: Joi.string().min(3),
+        correct_answer: Joi.string().min(3), 
+        incorrect_answer: Joi.alternatives().try(incorrect_answers, arraySchema)
     }),
     questionIdSchema: Joi.object({
         id: Joi.objectId().required()
