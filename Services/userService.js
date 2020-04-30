@@ -3,7 +3,6 @@ const constants = require('../config/constants');
 const User = require('../models/db/User');
 const crudRepositoryUser = require('../database/crudRespositoryUser');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 module.exports.registerUser = async (user) => {
     const responseObj = constants.responseObj;
