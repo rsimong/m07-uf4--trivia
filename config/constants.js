@@ -16,6 +16,7 @@ module.exports = {
         userInvalidCredentials: '¿Estas tonto o que?',
         questionCreated: "Question created successfully",
         questionUpdated: "Question updated successfully",
+        questionDeleted: "Question deleted successfully",
         
     },
     requestObj: {
