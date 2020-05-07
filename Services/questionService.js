@@ -3,6 +3,22 @@ const crudRepository = require('../database/crudRespositoryUser');
 const mongoose = require('mongoose');
 const Question = require('../models/db/Question');
 
+module.exports.getAllQuestion = async () => {
+    const responseObj = constants.responseObj;
+        const model = Question;
+    try {
+        const responseFromBBDD = await crudRepository.getAllQuestions(model);
+
+        if (responseFromBBDD.status) {
+            responseObj.status = constants.httpStatus.ok;
+            responseObj.body = responseFromBBDD.result;
+        }
+    } catch (error) {
+        console.log("ERROR-questionService-getAllQuestions: ", error);
+    }
+    return responseObj;
+}
+
 module.exports.createQuestion = async (question) =>{
     const responseObj = constants.responseObj;
 

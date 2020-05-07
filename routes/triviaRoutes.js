@@ -21,6 +21,12 @@ router.post('/login',
 );
 
         /*Questions CRUD*/
+
+router.get('/', 
+    tokenValidation.validate,
+    quetionController.getAllQuestions
+)
+
 router.post('/create', 
     joiSchemaValidation.validate(questionSchema.createQuestion, constants.requestObj.BODY_PARAMS),
     tokenValidation.validate,

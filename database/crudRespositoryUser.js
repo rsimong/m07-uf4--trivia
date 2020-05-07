@@ -42,6 +42,13 @@ module.exports.findOne = async (data) =>{
 }
 
         /*Question CRUD*/
+
+module.exports.getAllQuestions = async (model) => {
+    return new Promise((resolve, reject) => {
+        /* model.find({}) */
+    })
+}
+
 module.exports.insertQuestion = async (data) =>{
     return new Promise((resolve, reject) => {
         data.model.save().then(docs => {
