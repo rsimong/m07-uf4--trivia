@@ -42,6 +42,13 @@ module.exports.findOne = async (data) =>{
 }
 
         /*Question CRUD*/
+
+module.exports.getAllQuestions = async (model) => {
+    return new Promise((resolve, reject) => {
+        /* model.find({}) */
+    })
+}
+
 module.exports.insertQuestion = async (data) =>{
     return new Promise((resolve, reject) => {
         data.model.save().then(docs => {
@@ -62,10 +69,11 @@ module.exports.insertQuestion = async (data) =>{
 
 module.exports.updateData = (data) => {
     return new Promise((resolve, reject) => {
+        
         data.model.findOneAndUpdate(data.findQuery, data.updateQuery,
             {new: true, projection: data.projection, useFindAndModify: false}
-        )
-        .then(docs =>{
+        ).then(docs =>{
+            
             const responseObj = {
                 result: docs,
                 status: true
@@ -74,6 +82,26 @@ module.exports.updateData = (data) => {
         }).catch(error => {
             const responseObj = {
                 error: error,
+                status: false
+            }
+            reject(responseObj)
+        })
+    })
+}
+
+module.exports.deleteData = (data) =>{
+    return new Promise((resolve, reject) =>{
+        data.model.findOneAndDelete(data.findQuery, 
+            {projection: data.projection}
+        ).then(docs =>{
+            const responseObj = {
+                result: docs,
+                status: true
+            };
+            resolve(responseObj);
+        }).catch(e => {
+            const responseObj = {
+                error: e,
                 status: false
             }
             reject(responseObj)
