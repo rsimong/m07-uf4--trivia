@@ -12,18 +12,24 @@ module.exports.find = (req, res) => {
     if (dateFrom && dateTo) {
         dateRange = {
             "createdAt": {
-                "$gte": moment(dateFrom, dateInputsFormats).subtract(1, 'd').toISOString(),
+                "$gte": moment(dateFrom, dateInputsFormats).toISOString(),
                 "$lt": moment(dateTo, dateInputsFormats).add(1, 'd').toISOString()
             }
         };
     } else if (dateFrom) {
         dateRange = {
             "createdAt": {
-                "$gte": moment(dateFrom, dateInputsFormats).subtract(1, 'd').toISOString()
+                "$gte": moment(dateFrom, dateInputsFormats).toISOString()
             }
         };
     }
     SearchesRepository.find({ ...dateRange })
+        .then((resp) => res.status(200).send(resp))
+        .catch((error) => res.status(500).send({ error: 'An error occurred while searching searches', reason: error }));
+};
+
+module.exports.findOne = (req, res) => {
+    SearchesRepository.find({ _id: req.params.id })
         .then((resp) => res.status(200).send(resp))
         .catch((error) => res.status(500).send({ error: 'An error occurred while searching searches', reason: error }));
 };
