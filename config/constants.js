@@ -13,7 +13,10 @@ module.exports = {
         pageFound: 'Page found',
         userRegistered: 'User registered successfully',
         loguedUser: 'You Are Logued!',
-        userInvalidCredentials: '¿Estas tonto o que?'
+        userInvalidCredentials: '¿Estas tonto o que?',
+        questionCreated: "Question created successfully",
+        questionUpdated: "Question updated successfully",
+        questionDeleted: "Question deleted successfully",
         
     },
     requestObj: {

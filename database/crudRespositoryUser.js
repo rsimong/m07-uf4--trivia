@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
         /* Registrar usuario */
 module.exports.insertData = async (data) => {
     let responseObj = {satus: false};
@@ -21,14 +23,14 @@ module.exports.insertData = async (data) => {
 module.exports.findOne = async (data) =>{
     let responseObj = { status: false};
     try {
-        const docs = await data.model.findOne(data.findQuery);
-
-        console.log(docs);
-        
+        const docs = await data.model.findOne(
+            { username: data.findQuery.username }
+        ) 
         responseObj = {
             result: docs,
             status: true
         };
+
     } catch (e) {
         responseObj = {
             error: e,
@@ -37,4 +39,72 @@ module.exports.findOne = async (data) =>{
         console.log('ERROR-crudRepositoryUser-findOne: ', e);
     }
     return responseObj
+}
+
+        /*Question CRUD*/
+
+module.exports.getAllQuestions = async (model) => {
+    return new Promise((resolve, reject) => {
+        /* model.find({}) */
+    })
+}
+
+module.exports.insertQuestion = async (data) =>{
+    return new Promise((resolve, reject) => {
+        data.model.save().then(docs => {
+            const responseObj = {
+                result: docs,
+                status: true
+            }
+            resolve(responseObj)
+        }).catch(err => {
+            const responseObj = {
+                result: err,
+                status: false
+            };
+            reject(responseObj)
+        })
+    });
+}
+
+module.exports.updateData = (data) => {
+    return new Promise((resolve, reject) => {
+        
+        data.model.findOneAndUpdate(data.findQuery, data.updateQuery,
+            {new: true, projection: data.projection, useFindAndModify: false}
+        ).then(docs =>{
+            
+            const responseObj = {
+                result: docs,
+                status: true
+            }
+            resolve(responseObj);
+        }).catch(error => {
+            const responseObj = {
+                error: error,
+                status: false
+            }
+            reject(responseObj)
+        })
+    })
+}
+
+module.exports.deleteData = (data) =>{
+    return new Promise((resolve, reject) =>{
+        data.model.findOneAndDelete(data.findQuery, 
+            {projection: data.projection}
+        ).then(docs =>{
+            const responseObj = {
+                result: docs,
+                status: true
+            };
+            resolve(responseObj);
+        }).catch(e => {
+            const responseObj = {
+                error: e,
+                status: false
+            }
+            reject(responseObj)
+        })
+    })
 }

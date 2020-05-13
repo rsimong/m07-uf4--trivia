@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
 
 module.exports.createConnection = async () => {
-    try {
-        await mongoose.connect(process.env.DB_URL, {
-            useNewUrlParser: true, 
-            useUnifiedTopology: true
+    
+    await mongoose.connect(`${process.env.DB_URL}`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    },
+        (err) => {
+            if (err) {
+                console.log('[Mongoose] ERROR DB connection');
+                console.log(`[Mongoose] ERROR Msg: ${err.message}`);
+            } else {
+                console.log('[Mongoose] DB Connected!');
+            }
         });
-        console.log('DB Connected');
-        
-        mongoose.connection.on('error', (error) => {
-            console.log('ERROR the conecction was interrupted. ', error);
-        });
-    } catch (error) {
-        console.log('ERROR Cannot connect to the DB: ', error);
-    }
 };

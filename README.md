@@ -41,12 +41,12 @@ Tened en cuenta que ningún CRUD u obtención de la BBDD se podrá hacer sin est
 La puntuación se dividirá de la siguiente forma:
 
 - Puntuación compartida:
-  - (``0,5p``) BBDD correcta.
+  - (``0,5p``) BBDD correcta. 
   - (``0,5p``) \*Uso de Git.
   - (``0,5p``) \*Uso de Postman (crear colecciones de URLs y crear documentación de la API).
 - Puntuación del desarrollador 1:
   - (``2p``) CRUD preguntas.
-  - (``2p``) Registro, login y middleware
+  - (``2p``) Registro, login y middleware.
   - (``2p``) Búsqueda avanzada de preguntas.
   - (``1,5p``) Seguimiento semanal (0,5 cada seguimientodías: 22 o 23, 29 o 30, y 6 o 7).
   - (``1p``) \*Calidad del códigoy separación en servicios, controladores, etc.
@@ -59,4 +59,32 @@ La puntuación se dividirá de la siguiente forma:
   
 Los apartados marcados con un \* no se contarán a menos que se obtenga un mínimo de 5 en los demás puntos.
 
-mike
+### Miembros
+- Miguel Antonio Cortes (``Developer 1``)
+- Ricard Simón (``Developer 2``)
+
+<br>
+
+---
+
+<br>
+
+### TODO List (Status)
+
+- Puntuación compartida:
+  - (``0,5p``) ~~BBDD correcta.~~ 
+  - (``0,5p``) ~~\*Uso de Git.~~
+  - (``0,5p``) ~~\*Uso de Postman (crear colecciones de URLs y crear documentación de la API).~~ (& Insomnia)
+- Puntuación del desarrollador 1:
+  - (``2p``) CRUD preguntas. [``IN PREGRESS``]
+  - (``2p``) Registro, login y middleware [``DO IT``]
+  - (``2p``) Búsqueda avanzada de preguntas.
+  - (``1,5p``) Seguimiento semanal (0,5 cada seguimientodías: 22 o 23, 29 o 30, y 6 o 7).
+  - (``1p``) \*Calidad del códigoy separación en servicios, controladores, etc.
+- Puntuación del desarrollador 2:
+  - (``2p``) ~~CRUD de búsquedas~~.
+  - (``2p``) ~~Creación de búsquedas~~ y sus preguntas usando el servicio externo.
+  - (``2p``) ~~Búsqueda avanzada de búsquedas~~.
+  - (``1,5p``) Seguimiento semanal (0,5 cada seguimientodías: 22 o 23, 29 o 30, y 6 o 7).
+  - (``1p``) \*Calidad del código y separación en servicios, controladores, etc.
+  

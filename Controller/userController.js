@@ -1,14 +1,14 @@
 const constants = require('../config/constants');
-const userService = require('../Services/userService');
+const userService = require('../services/userService');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-module.exports.register = async (request, response)=>{
+module.exports.register = async (request, response) => {
     let responseObj = constants.responseObj;
     try {
         let user = {
             username: request.body.username,
-            password: await bcrypt.hash(request.body.password,10)
+            password: await bcrypt.hash(request.body.password, 10)
         }
 
         const responseFromService = await userService.registerUser(user);
@@ -23,13 +23,13 @@ module.exports.register = async (request, response)=>{
     return response.status(responseObj.status).send(responseObj);
 }
 
-module.exports.authenticate = async (request, response) =>{
+module.exports.authenticate = async (request, response) => {
     const responseObj = constants.responseObj;
     try {
         const user = request.body;
         const responseFromService = await userService.authenticate(user);
-        
-        if (responseFromService.status === constants.httpStatus.ok) {
+        if (responseFromService.status === constants.httpStatus.ok && await bcrypt.compareSync(user.password,responseFromService.body.password)) {
+            console.log("Generar token");
             const token = jwt.sign(
                 {
                     id: responseFromService.body._id
@@ -39,7 +39,7 @@ module.exports.authenticate = async (request, response) =>{
             );
             responseObj.body = token;
             responseObj.message = constants.controllerMessages.loguedUser;
-        }else if (responseFromService.status === constants.httpStatus.bad_request) {
+        } else if (responseFromService.status === constants.httpStatus.bad_request) {
             responseObj = responseFromService;
             responseObj.message = constants.controllerMessages.userInvalidCredentials;
         }
