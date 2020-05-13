@@ -19,10 +19,16 @@ const SearchesController = require('../controller/searchesController');
 // =========================================
 
 // List Searches (Filtered or Not filtered)
-router.get('/:from?/:to?',
+router.get('/list/:from?/:to?',
     tokenValidation.validate(),
     joiSchemaValidation.validate(searchesSchema.uriParams, constants.requestObj.PATH_PARAMS),
     SearchesController.find);
+
+// Find Search
+router.get('/:id',
+    tokenValidation.validate(),
+    joiSchemaValidation.validate(searchesSchema.uriSearchId, constants.requestObj.PATH_PARAMS),
+    SearchesController.findOne);
 
 // Create Search
 router.post('/',
